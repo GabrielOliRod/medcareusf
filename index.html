@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Med Care - Lista de Medicações</title>
+  <style>
+    /* Reset básico para limpar margin e padding padrão */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif; /* Define uma fonte padrão */
+    }
+
+    /* Estilização do container principal */
+    .container {
+      max-width: 400px; /* Limita a largura do container */
+      margin: 0 auto; /* Centraliza horizontalmente */
+      padding: 10px;
+      background-color: #e0e0e0; /* Fundo claro */
+      border-radius: 10px;
+      text-align: center;
+      padding-bottom: 70px; /* Evita que o conteúdo fique atrás do botão fixo */
+    }
+
+    /* Estilo do cabeçalho */
+    .header {
+      background-color: #6EC1E4; /* Fundo azul */
+      padding: 10px;
+      font-size: 24px;
+      color: #fff; /* Texto branco */
+      font-weight: bold;
+      border-radius: 10px 10px 0 0; /* Arredonda o topo */
+    }
+
+    /* Estilo de cada item de medicamento */
+    .medicine {
+      background-color: #f5f5f5; /* Fundo claro */
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Alinha itens à esquerda */
+    }
+
+    /* Estilo para itens ativos (exemplo de estado especial) */
+    .medicine.active {
+      background-color: #B3E5FC; /* Fundo azul claro para destacar */
+    }
+
+    /* Estilos para o nome do medicamento */
+    .medicine .name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* Estilos para o horário do medicamento */
+    .medicine .time {
+      font-size: 24px;
+      margin-top: 5px;
+    }
+
+    /* Botão para expandir/ocultar detalhes do medicamento */
+    .medicine .toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    /* Informações adicionais do medicamento */
+    .medicine .everyday {
+      font-size: 12px;
+      color: #777; /* Cor cinza para informações secundárias */
+      margin-top: 5px;
+    }
+
+    /* Botão de adicionar novo medicamento, fixo no rodapé */
+    .add-btn {
+      background-color: #6EC1E4; /* Fundo azul */
+      color: #fff; /* Cor do texto branco */
+      width: 50px;
+      height: 50px;
+      border-radius: 50%; /* Formato circular */
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 20px; /* Distância da parte inferior */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Ajuste fino para centralizar */
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">MED CARE</div>
+    <div id="medicineList">
+      <!-- Os itens de medicamento serão adicionados aqui -->
+    </div>
+    <div class="add-btn" onclick="navigateToAddMedicine()">+</div> <!-- Botão para adicionar nova medicação -->
+  </div>
+
+  <script>
+    function navigateToAddMedicine() {
+      window.location.href = "add_medicine.html"; // Redireciona para a tela de adição de medicamento
+    }
+  </script>
+</body>
+</html>

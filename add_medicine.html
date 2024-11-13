@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Med Care - Adicionar Medicação</title>
+  <style>
+    /* Estilos de resete para margin e padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Define o layout centralizado da caixa principal */
+    .container {
+      max-width: 400px;
+      margin: 0 auto; /* Centraliza horizontalmente */
+      padding: 10px;
+      background-color: #e0e0e0; /* Fundo claro */
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    /* Estilização do cabeçalho */
+    .header {
+      background-color: #6EC1E4; /* Fundo azul */
+      padding: 10px;
+      font-size: 24px;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px 10px 0 0; /* Cantos arredondados no topo */
+      margin-bottom: 20px;
+    }
+
+    /* Estilos dos campos de entrada */
+    .input-field {
+      width: 100%; /* Ocupa toda a largura do container */
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc; /* Borda cinza clara */
+      font-size: 16px;
+    }
+
+    /* Estilos dos botões "Salvar" e "Voltar" */
+    .save-btn, .back-btn {
+      background-color: #6EC1E4; /* Cor de fundo azul */
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%; /* Ocupa toda a largura do container */
+    }
+
+    .back-btn {
+      background-color: #ccc; /* Cor cinza para o botão de voltar */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Adicionar Medicação</div>
+    <input type="text" id="medicineName" class="input-field" placeholder="Nome do medicamento"> <!-- Campo para o nome do medicamento -->
+    <input type="time" id="medicineTime" class="input-field" placeholder="Horário para tomar"> <!-- Campo para o horário do medicamento -->
+    <button class="save-btn" onclick="saveMedicine()">Salvar</button> <!-- Botão para salvar o medicamento -->
+    <button class="back-btn" onclick="goBack()">Voltar</button> <!-- Botão para voltar à página inicial -->
+  </div>
+
+  <script>
+    function saveMedicine() {
+      const name = document.getElementById("medicineName").value; // Obtém o nome do medicamento
+      const time = document.getElementById("medicineTime").value; // Obtém o horário do medicamento
+      
+      if (name && time) { // Valida que ambos os campos foram preenchidos
+        const medicine = { name, time }; // Cria um objeto com o nome e horário do medicamento
+        const medicines = JSON.parse(localStorage.getItem("medicines") || "[]"); // Recupera lista de medicamentos do localStorage
+        medicines.push(medicine); // Adiciona o novo medicamento à lista
+        localStorage.setItem("medicines", JSON.stringify(medicines)); // Salva a lista atualizada no localStorage
+        alert("Medicação adicionada com sucesso!"); // Alerta ao usuário que a adição foi bem-sucedida
+        goBack(); // Retorna à página inicial
+      } else {
+        alert("Por favor, preencha todos os campos."); // Alerta caso algum campo não tenha sido preenchido
+      }
+    }
+
+    function goBack() {
+      window.location.href = "index.html"; // Redireciona para a página inicial
+    }
+  </script>
+</body>
+</html>
